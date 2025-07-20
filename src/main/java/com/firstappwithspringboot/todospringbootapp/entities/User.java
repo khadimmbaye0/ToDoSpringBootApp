@@ -1,27 +1,36 @@
 package com.firstappwithspringboot.todospringbootapp.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "userApp")
 public class User {
 
     @Id
     @GeneratedValue
     private Integer idUser;
 
+    @NotEmpty
     private String firstName;
 
+    @NotEmpty
     private String lastName;
 
+    @NotNull
     private Integer age;
 
+    @NotEmpty
     private String email;
 
+    @NotEmpty
     private String password;
+
+    @OneToMany(mappedBy = "user")
+    private List<Project> projects;
 
     public User() {}
 
@@ -79,6 +88,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 
 }
