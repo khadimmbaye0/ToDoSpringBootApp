@@ -3,6 +3,8 @@ package com.firstappwithspringboot.todospringbootapp.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -32,6 +34,12 @@ public class Project extends CalculusMethod {
 
     @OneToMany(mappedBy = "project")
     private List<Task> tasks;
+
+    @CreationTimestamp
+    private LocalDateTime created_at;
+
+    @UpdateTimestamp
+    private LocalDateTime updated_at;
 
     public Project() {}
 

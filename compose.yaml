@@ -3,7 +3,7 @@ services:
     image: 'postgres:latest'
     environment:
       - 'POSTGRES_DB=todoapp'
-      - 'POSTGRES_PASSWORD=postgres'
-      - 'POSTGRES_USER=passer'
+      - 'POSTGRES_PASSWORD=passer'
+      - 'POSTGRES_USER=postgres'
     ports:
       - '5432:5432'

@@ -1,5 +1,7 @@
-package com.firstappwithspringboot.todospringbootapp.entities;
+package com.firstappwithspringboot.todospringbootapp.dto;
 
+import com.firstappwithspringboot.todospringbootapp.entities.EnnumState;
+import com.firstappwithspringboot.todospringbootapp.entities.Project;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -8,55 +10,24 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "task")
-public class Task extends CalculusMethod {
+public class TaskDto {
 
-    @Id
-    @GeneratedValue
-    private Integer idTask;
-
-    @NotEmpty
     private String taskName;
-
     private String taskDescription;
-
-    @NotNull
     private LocalDateTime taskDateBegin;
-
-    @NotNull
     private Integer duration;
-
-    @Enumerated(EnumType.STRING)
     private EnnumState state;
-
-    @CreationTimestamp
-    private LocalDateTime created_at;
-
-    @UpdateTimestamp
-    private LocalDateTime updated_at;
-
-    @ManyToOne
-    @JoinColumn(name = "project_id")
     private Project project;
 
-    public Task() {}
+    public TaskDto() {}
 
-    public Task(String taskName, String taskDescription, LocalDateTime taskDateBegin, Integer duration, EnnumState state, Project project) {
+    public TaskDto(String taskName, String taskDescription, LocalDateTime taskDateBegin, Integer duration, EnnumState state, Project project) {
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         this.taskDateBegin = taskDateBegin;
         this.duration = duration;
         this.state = state;
         this.project = project;
-    }
-
-    public Integer getIdTask() {
-        return idTask;
-    }
-
-    public void setIdTask(Integer idTask) {
-        this.idTask = idTask;
     }
 
     public String getTaskName() {

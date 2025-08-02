@@ -3,11 +3,13 @@ package com.firstappwithspringboot.todospringbootapp.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "userApp")
+@Table(name = "user_app")
 public class User {
 
     @Id
@@ -28,6 +30,12 @@ public class User {
 
     @NotEmpty
     private String password;
+
+    @CreationTimestamp
+    private LocalDateTime created_at;
+
+    @CreationTimestamp
+    private LocalDateTime updated_at;
 
     @OneToMany(mappedBy = "user")
     private List<Project> projects;
